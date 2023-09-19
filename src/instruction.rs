@@ -2908,7 +2908,7 @@ impl Fence {
         Self {
             atomicity: Atomicity {
                 synch_scope: SynchronizationScope::from_llvm_ref(inst),
-                mem_ordering: MemoryOrdering::from_llvm(unsafe { LLVMGetOrdering(inst) }),
+                mem_ordering: MemoryOrdering::from_llvm(LLVMAtomicOrdering::LLVMAtomicOrderingAcquire),
             },
             #[cfg(feature = "llvm-9-or-greater")]
             debugloc: DebugLoc::from_llvm_with_col(inst),
